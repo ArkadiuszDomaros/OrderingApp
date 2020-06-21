@@ -2,6 +2,15 @@ package trainingAppPackage;
 
 public class Account {
     private boolean active;
+    private Adress defaultdeliveryAdress;
+
+    public Adress getDeliveryAdress() {
+        return defaultdeliveryAdress;
+    }
+
+    public void setDeliveryAdress(Adress deliveryAdress) {
+        this.defaultdeliveryAdress = deliveryAdress;
+    }
 
     public Account(){
         this.active = false;
