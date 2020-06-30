@@ -9,7 +9,7 @@ class MealTest {
     @Test
     void shouldResultDiscountPrice() {
         //given
-        Meal meal = new Meal(20);
+        Meal meal = new Meal(20, "Burger");
 
         //when
         double discountedPrice = meal.getDiscountPrice(50);
@@ -27,4 +27,15 @@ class MealTest {
         //then
         assertEquals(meal1, meal2);
     }
+
+    @Test
+    void discountedPriceShouldThrowExceptionIfBiggerThanBasicPrice() {
+        //given
+        Meal meal = new Meal(20.00, "Banana Cake");
+
+        //when
+        //then
+        assertThrows(IllegalArgumentException.class, () -> meal.getDiscountPrice(120));
+    }
+
 }

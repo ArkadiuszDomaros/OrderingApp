@@ -20,8 +20,23 @@ public class Meal {
         return price;
     }
 
-    public double getDiscountPrice( int discount){
-        return price * discount/100;
+    public double getDiscountPrice(int discount){
+
+        double discountedPrice = price * discount/100;
+        if(discountedPrice > this.price){
+            throw new IllegalArgumentException("Discounted price should be smaller than basic price");
+        } else {
+            return discountedPrice;
+        }
+
+    }
+
+    @Override
+    public String toString() {
+        return "Meal{" +
+                "price=" + price +
+                ", name='" + name + '\'' +
+                '}';
     }
 
     @Override
