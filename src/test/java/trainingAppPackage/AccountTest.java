@@ -1,11 +1,12 @@
 package trainingAppPackage;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
+@DisplayName("Testing accounts")
 class AccountTest {
 
     private Account account;
@@ -15,12 +16,14 @@ class AccountTest {
         account = new Account();
     }
 
+    @DisplayName("Account not active after create")
     @Test
     void isNotActive(){
         //then
         assertFalse(account.getStatus());
     }
 
+    @DisplayName("Account activated successfully")
     @Test
     void activateAccount(){
         //when
@@ -30,8 +33,9 @@ class AccountTest {
         assertTrue(account.getStatus());
     }
 
+    @DisplayName("No default address after activate account")
     @Test
-    void activatedAccountShouldNotHaveDefaultDeliveryAdress() {
+    void activatedAccountShouldNotHaveDefaultDeliveryAddress() {
         //when
         Adress adress = account.getDeliveryAdress();
 
@@ -39,6 +43,7 @@ class AccountTest {
         assertNull(adress);
     }
 
+    @DisplayName("Default delivery address is not null after set")
     @Test
     void defaultDeliveryAdressNotNullAfterSet() {
         //given

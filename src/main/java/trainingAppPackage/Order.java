@@ -26,4 +26,11 @@ public class Order {
     public String toString() {
         return "orderList=" + orderList;
     }
+
+    public void orderListSimulator(){
+        Meal meal = new Meal(10.00, "Burger");
+        for(int i = 0; i<100; i++){
+            addToOrder(meal);
+        }
+    }
 }

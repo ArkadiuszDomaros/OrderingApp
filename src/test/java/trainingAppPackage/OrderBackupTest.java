@@ -1,14 +1,12 @@
 package trainingAppPackage;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+@DisplayName("Testing order backup")
 class OrderBackupTest {
 
     private static OrderBackup orderBackup;
@@ -19,6 +17,7 @@ class OrderBackupTest {
         orderBackup.createFile();
     }
 
+    @DisplayName("Working backup with one order")
     @Test
     void backupOrderWithOneMeal() throws IOException {
         //given
@@ -31,6 +30,24 @@ class OrderBackupTest {
 
         //then
         System.out.printf("Order %s backed up.%n", order.toString());
+    }
+
+    @DisplayName("Backup file created quicker than 15ms with 5 meals")
+    @Test
+    void backupShouldCreateFileInFiveMS() throws IOException {
+        //given
+        Meal meal = new Meal(10.00, "Burger");
+        Order order = new Order();
+
+        //when
+        for(int i = 0; i < 5; i++) {
+            order.addToOrder(meal);
+        }
+
+        //then
+        Assertions.assertTimeout(Duration.ofMillis(15), () -> {
+            orderBackup.backupOrder(order);
+        });
     }
 
     @AfterAll

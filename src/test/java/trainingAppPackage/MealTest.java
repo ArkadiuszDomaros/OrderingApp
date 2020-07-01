@@ -1,11 +1,14 @@
 package trainingAppPackage;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Testing meal objects")
 class MealTest {
 
+    @DisplayName("Proper result of discounted price")
     @Test
     void shouldResultDiscountPrice() {
         //given
@@ -18,6 +21,7 @@ class MealTest {
         assertEquals(discountedPrice, 10);
     }
 
+    @DisplayName("Same meal objects should be equal")
     @Test
     void mealObjectsWithSamePriceAndNameShouldBeEqual() {
         //given
@@ -28,6 +32,7 @@ class MealTest {
         assertEquals(meal1, meal2);
     }
 
+    @DisplayName("Exception when discounted price is bigger than basic price")
     @Test
     void discountedPriceShouldThrowExceptionIfBiggerThanBasicPrice() {
         //given

@@ -2,12 +2,16 @@ package trainingAppPackage;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.time.Duration;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+@DisplayName("Testing orders")
 class OrderTest {
 
     private Order order;
@@ -22,6 +26,7 @@ class OrderTest {
         order.cancel();
     }
 
+    @DisplayName("Order is empty after creating instance")
     @Test
     void orderInstanceShouldBeEmptyAfterCreate(){
         //then
@@ -29,6 +34,7 @@ class OrderTest {
         assertThat(order.getList(), hasSize(0));
     }
 
+    @DisplayName("Size of order is increasing after adding meal")
     @Test
     void addingMealShouldIncreaseListSize(){
         //given
@@ -42,6 +48,7 @@ class OrderTest {
         assertThat(order.getList(), hasItem(meal));
     }
 
+    @DisplayName("Size of order decreasing after removing meal from list")
     @Test
     void removingMealShouldDecreaseListSize(){
         //given
@@ -56,6 +63,7 @@ class OrderTest {
         assertThat(order.getList(), not(contains(meal)));
     }
 
+    @DisplayName("Meals are in proper order")
     @Test
     void mealsShouldBeAtProperOrderAfterAddThem(){
         //given
@@ -68,6 +76,17 @@ class OrderTest {
 
         //then
         assertThat(order.getList(), contains(meal, meal2));
+    }
+
+    @DisplayName("100 Meals should be added after 1ms")
+    @Test
+    void simulateLargeOrder(){
+        //given
+        Order order = new Order();
+
+        //when
+        //then
+        assertTimeout(Duration.ofMillis(1), order::orderListSimulator);
     }
 
 }
