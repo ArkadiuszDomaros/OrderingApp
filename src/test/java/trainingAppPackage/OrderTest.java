@@ -30,8 +30,8 @@ class OrderTest {
     @Test
     void orderInstanceShouldBeEmptyAfterCreate(){
         //then
-        assertThat(order.getList(), empty());
-        assertThat(order.getList(), hasSize(0));
+        assertThat(order.getList(), anyOf(empty(),
+                hasSize(0)));
     }
 
     @DisplayName("Size of order is increasing after adding meal")
@@ -44,8 +44,9 @@ class OrderTest {
         order.addToOrder(meal);
 
         //then
-        assertThat(order.getList(), hasSize(1));
-        assertThat(order.getList(), hasItem(meal));
+        assertThat(order.getList(), anyOf(hasSize(1),
+                contains(meal)
+        ));
     }
 
     @DisplayName("Size of order decreasing after removing meal from list")
@@ -59,8 +60,9 @@ class OrderTest {
         order.removeFromOrder(meal);
 
         //then
-        assertThat(order.getList(), hasSize(0));
-        assertThat(order.getList(), not(contains(meal)));
+        assertThat(order.getList(), anyOf(hasSize(0),
+                not(contains(meal))
+                ));
     }
 
     @DisplayName("Meals are in proper order")
