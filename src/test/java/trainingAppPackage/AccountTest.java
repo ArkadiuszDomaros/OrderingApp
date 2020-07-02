@@ -56,4 +56,16 @@ class AccountTest {
         //then
         assertNotNull(defaultDeliveryAdress);
     }
+
+    @DisplayName("Account activated after create account with default address")
+    @Test
+    void accountShouldBeActivatedIfCreatedWithDefaultAddress(){
+        //given
+        Adress adress = new Adress("McDonald", "13");
+        Account account = new Account(adress);
+
+        //when
+        //then
+        assertTrue(account.getStatus());
+    }
 }
