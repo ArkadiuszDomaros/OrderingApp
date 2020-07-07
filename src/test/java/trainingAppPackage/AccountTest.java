@@ -68,4 +68,13 @@ class AccountTest {
         //then
         assertTrue(account.getStatus());
     }
+
+    @DisplayName("Invalid email should throw exception")
+    @Test
+    void invalidEmailAddressShouldThrowException(){
+        //given
+        //when
+        //then
+        assertThrows(IllegalArgumentException.class, () -> account.setEmail("Wrong email"));
+    }
 }

@@ -91,4 +91,19 @@ class OrderTest {
         assertTimeout(Duration.ofMillis(1), order::orderListSimulator);
     }
 
+    @DisplayName("Total price lower than max int")
+    @Test
+    void orderTotalPriceShouldBeLowerThanMaxInt(){
+        //given
+        Meal meal = new Meal(Integer.MAX_VALUE, "Soup");
+        Meal meal2 = new Meal(Integer.MAX_VALUE, "Burger");
+
+        //when
+        order.addToOrder(meal);
+        order.addToOrder(meal2);
+
+        //then
+        assertThrows(IllegalStateException.class, () -> order.finalPrice());
+    }
+
 }

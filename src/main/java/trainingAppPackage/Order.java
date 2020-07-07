@@ -22,6 +22,16 @@ public class Order {
         this.orderList.clear();
     }
 
+    public int finalPrice(){
+        int sum = this.orderList.stream().mapToInt(meal -> (int) meal.getPrice()).sum();
+
+        if(sum < 0){
+            throw new IllegalStateException("Price higher than limit");
+        } else {
+            return sum;
+        }
+    }
+
     @Override
     public String toString() {
         return "orderList=" + orderList;
