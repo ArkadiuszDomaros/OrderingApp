@@ -18,7 +18,13 @@ public class OrderBackup {
     }
 
     void backupOrder(Order order) throws IOException {
-        writer.append(order.toString());
+
+        if(writer == null){
+            throw new IOException("Backup order can not be empty");
+        } else {
+            writer.append(order.toString());
+        }
+
     }
 
     void closeFile() throws IOException {

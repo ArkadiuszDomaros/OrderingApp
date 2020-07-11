@@ -106,4 +106,27 @@ class OrderTest {
         assertThrows(IllegalStateException.class, () -> order.finalPrice());
     }
 
+    @DisplayName("Price of empty order equal zero")
+    @Test
+    void emptyOrderPriceShouldBeEqualZero(){
+        //then
+        assertThat(order.finalPrice(), equalTo(0));
+    }
+
+    @DisplayName("Order list should be empty after cancel order")
+    @Test
+    void orderShouldBeEmptyAfterCancel(){
+        //given
+        Meal meal = new Meal(Integer.MAX_VALUE, "Soup");
+        Meal meal2 = new Meal(Integer.MAX_VALUE, "Burger");
+
+        //when
+        order.addToOrder(meal);
+        order.addToOrder(meal2);
+        order.cancel();
+
+        //then
+        assertThat(order.getList().size(), equalTo(0));
+    }
+
 }

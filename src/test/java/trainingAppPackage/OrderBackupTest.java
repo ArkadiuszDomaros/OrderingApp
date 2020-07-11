@@ -6,6 +6,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.time.Duration;
 
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 @DisplayName("Testing order backup")
 class OrderBackupTest {
 
@@ -48,6 +51,16 @@ class OrderBackupTest {
         Assertions.assertTimeout(Duration.ofMillis(15), () -> {
             orderBackup.backupOrder(order);
         });
+    }
+
+    @DisplayName("Throw exception if order backup is empty")
+    @Test
+    void callingBackupWithoutCreatingFileShouldThrowException(){
+        //given
+        OrderBackup orderBackup = new OrderBackup();
+        //when
+        //then
+        assertThrows(IOException.class, () -> orderBackup.backupOrder(new Order()));
     }
 
     @AfterAll
