@@ -1,0 +1,1 @@
+orderList=[Meal{price=20.0, name='Pizza'}]orderList=[Meal{price=10.0, name='Burger'}, Meal{price=10.0, name='Burger'}, Meal{price=10.0, name='Burger'}, Meal{price=10.0, name='Burger'}, Meal{price=10.0, name='Burger'}]

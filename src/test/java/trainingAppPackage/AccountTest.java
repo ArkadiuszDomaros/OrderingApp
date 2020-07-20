@@ -4,6 +4,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Testing accounts")
@@ -76,5 +78,16 @@ class AccountTest {
         //when
         //then
         assertThrows(IllegalArgumentException.class, () -> account.setEmail("Wrong email"));
+    }
+
+    @DisplayName("Proper email should be set")
+    @Test
+    void correctEmailShouldSet(){
+        //given
+        //when
+        account.setEmail("correctemail@gmail.com");
+
+        //then
+        assertThat(account.getEmail(), is("correctemail@gmail.com"));
     }
 }

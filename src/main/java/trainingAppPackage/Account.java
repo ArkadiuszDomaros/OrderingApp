@@ -30,11 +30,15 @@ public class Account {
     }
 
     public void setEmail(String email){
-        if(email.matches("^[A-Za-z0-9._%+-]+\\.[A-Za-z]{2,6}$")){
+        if(email.matches("^[A-Za-z0-9._%+-]+[@]+[A-Za-z]+\\.[A-Za-z]{2,6}$")){
             this.email = email;
         } else {
             throw new IllegalArgumentException(("Wrong email format"));
         }
 
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 }
