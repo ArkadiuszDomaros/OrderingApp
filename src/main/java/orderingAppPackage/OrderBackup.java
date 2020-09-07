@@ -1,4 +1,4 @@
-package trainingAppPackage;
+package orderingAppPackage;
 
 import java.io.*;
 

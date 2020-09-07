@@ -1,17 +1,10 @@
-package trainingAppPackage;
+package orderingAppPackage;
 
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.DynamicTest;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.TestFactory;
-
-import java.lang.reflect.Executable;
-import java.util.ArrayList;
-import java.util.Collection;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.closeTo;
-import static org.hamcrest.Matchers.lessThan;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Testing meal objects")

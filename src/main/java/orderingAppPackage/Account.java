@@ -1,4 +1,4 @@
-package trainingAppPackage;
+package orderingAppPackage;
 
 public class Account {
     private boolean active;

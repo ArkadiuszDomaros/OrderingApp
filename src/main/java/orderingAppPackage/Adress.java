@@ -1,4 +1,4 @@
-package trainingAppPackage;
+package orderingAppPackage;
 
 public class Adress {
     private String street;
